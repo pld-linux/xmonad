@@ -10,13 +10,11 @@ Source1:	%{name}.desktop
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-mtl
-BuildRequires:	ghc-unix
 BuildRequires:	ghc-utf8-string
 BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
 Requires:	ghc-mtl
-Requires:	ghc-unix
 Requires:	ghc-utf8-string
 Requires:	ghc-X11 >= 1.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
