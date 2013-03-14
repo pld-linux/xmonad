@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=XSession
+Exec=xmonad
+TryExec=xmonad
+Name=Xmonad
+# vi: encoding=utf-8
