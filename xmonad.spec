@@ -9,11 +9,13 @@ Source0:	http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-
 Source1:	%{name}.desktop
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
+BuildRequires:	ghc-extensible-exceptions
 BuildRequires:	ghc-mtl
 BuildRequires:	ghc-utf8-string
 BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
+Requires:	ghc-extensible-exceptions
 Requires:	ghc-mtl
 Requires:	ghc-utf8-string
 Requires:	ghc-X11 >= 1.6
