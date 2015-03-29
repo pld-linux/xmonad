@@ -1,24 +1,24 @@
 Summary:	Tiling window manager
 Name:		xmonad
-Version:	0.11
+Version:	0.11.1
 Release:	1
 License:	BSD
 Group:		X11/Window Managers
-Source0:	http://hackage.haskell.org/packages/archive/%{name}/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	5ac9dc1dae5e85dcbdfb9f70cbe312c1
+Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	20792f4e428db24e6c0dbecbd77f69e0
 Source1:	%{name}.desktop
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
+BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	ghc-extensible-exceptions
 BuildRequires:	ghc-mtl
 BuildRequires:	ghc-utf8-string
-BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
-Requires:	ghc-extensible-exceptions
-Requires:	ghc-mtl
-Requires:	ghc-utf8-string
-Requires:	ghc-X11 >= 1.6
+%requires_releq	ghc-extensible-exceptions
+%requires_releq	ghc-mtl
+%requires_releq	ghc-utf8-string
+%requires_releq	ghc-X11
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # debuginfo is not useful for ghc
@@ -67,7 +67,7 @@ install -d $RPM_BUILD_ROOT%{_libdir}/%{ghcdir}/package.conf.d
 runhaskell Setup.lhs copy --destdir=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_deskdir},%{_xdeskdir}}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_xdeskdir}/%{name}.desktop
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_xdeskdir}/%{name}.desktop
 
 # work around automatic haddock docs installation
 rm -rf %{name}-%{version}-doc
@@ -77,7 +77,7 @@ cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/man
 %{__rmdir} $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install man/xmonad.1 $RPM_BUILD_ROOT%{_mandir}/man1
+cp -p man/xmonad.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 runhaskell Setup.lhs register \
 	--gen-pkg-config=$RPM_BUILD_ROOT/%{_libdir}/%{ghcdir}/package.conf.d/%{name}.conf
