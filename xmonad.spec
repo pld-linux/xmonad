@@ -7,6 +7,7 @@ Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	20792f4e428db24e6c0dbecbd77f69e0
 Source1:	%{name}.desktop
+Patch0:		%{name}-border.patch
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-X11 >= 1.6
@@ -49,6 +50,7 @@ Dokumentacja w formacie HTML dla %{name}.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 runhaskell Setup.lhs configure -v2 \
