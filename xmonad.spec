@@ -1,19 +1,22 @@
+#
+# Conditional build:
+%bcond_with	doc	# build with docs (broken)
+#
 Summary:	Tiling window manager
 Name:		xmonad
-Version:	0.11.1
+Version:	0.12
 Release:	1
 License:	BSD
 Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	20792f4e428db24e6c0dbecbd77f69e0
+# Source0-md5:	6fd5f268d38e940e090af0726795f513
 Source1:	%{name}.desktop
-Patch0:		%{name}-border.patch
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	ghc-extensible-exceptions
 BuildRequires:	ghc-mtl
-BuildRequires:	ghc-utf8-string
+BuildRequires:	ghc-utf8-string >= 0.3
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
 %requires_releq	ghc-extensible-exceptions
@@ -50,7 +53,6 @@ Dokumentacja w formacie HTML dla %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 runhaskell Setup.lhs configure -v2 \
@@ -60,7 +62,9 @@ runhaskell Setup.lhs configure -v2 \
 	--docdir=%{_docdir}/%{name}-%{version}
 
 runhaskell Setup.lhs build
+%if %{with doc}
 runhaskell Setup.lhs haddock --executables
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -73,7 +77,9 @@ cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_xdeskdir}/%{name}.desktop
 
 # work around automatic haddock docs installation
 rm -rf %{name}-%{version}-doc
+%if %{with doc}
 cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
+%endif
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/man
@@ -102,6 +108,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/xmonad.1*
 %{_xdeskdir}/%{name}.desktop
 
+%if %{with doc}
 %files doc
 %defattr(644,root,root,755)
 %doc %{name}-%{version}-doc/*
+%endif
