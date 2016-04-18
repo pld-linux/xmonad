@@ -16,11 +16,13 @@ BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	ghc-extensible-exceptions
 BuildRequires:	ghc-mtl
+BuildRequires:	ghc-setlocale
 BuildRequires:	ghc-utf8-string >= 0.3
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
 %requires_releq	ghc-extensible-exceptions
 %requires_releq	ghc-mtl
+%requires_releq	ghc-setlocale
 %requires_releq	ghc-utf8-string
 %requires_releq	ghc-X11
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
