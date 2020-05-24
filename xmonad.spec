@@ -4,12 +4,12 @@
 #
 Summary:	Tiling window manager
 Name:		xmonad
-Version:	0.12
-Release:	2
+Version:	0.15
+Release:	1
 License:	BSD
 Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	6fd5f268d38e940e090af0726795f513
+# Source0-md5:	3a45ffb3a46482da8d94873c48a79dfa
 Source1:	%{name}.desktop
 URL:		http://www.xmonad.org
 BuildRequires:	ghc >= 6.12.3
@@ -84,8 +84,6 @@ cp -a $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}/html %{name}-%{version}-doc
 %endif
 %{__rm} -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}/man
-%{__rmdir} $RPM_BUILD_ROOT%{_datadir}/%{name}-%{version}
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
 cp -p man/xmonad.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -103,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc man/xmonad.hs
+%doc man/xmonad.hs CHANGES.md CONFIG LICENSE README.md
 %attr(755,root,root) %{_bindir}/xmonad
 %{_libdir}/%{ghcdir}/package.conf.d/%{name}.conf
 %{_libdir}/%{ghcdir}/%{name}-%{version}
