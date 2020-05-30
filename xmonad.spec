@@ -5,7 +5,7 @@
 Summary:	Tiling window manager
 Name:		xmonad
 Version:	0.15
-Release:	1
+Release:	2
 License:	BSD
 Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
@@ -20,11 +20,11 @@ BuildRequires:	ghc-setlocale
 BuildRequires:	ghc-utf8-string >= 0.3
 BuildRequires:	rpmbuild(macros) >= 1.608
 %requires_eq	ghc
-%requires_releq	ghc-extensible-exceptions
-%requires_releq	ghc-mtl
-%requires_releq	ghc-setlocale
-%requires_releq	ghc-utf8-string
-%requires_releq	ghc-X11
+Requires:	ghc-X11 >= 1.6
+Requires:	ghc-extensible-exceptions
+Requires:	ghc-mtl
+Requires:	ghc-setlocale
+Requires:	ghc-utf8-string >= 0.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # debuginfo is not useful for ghc
