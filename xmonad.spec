@@ -5,7 +5,7 @@
 Summary:	Tiling window manager
 Name:		xmonad
 Version:	0.15
-Release:	2
+Release:	3
 License:	BSD
 Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
