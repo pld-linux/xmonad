@@ -6,7 +6,7 @@ Summary:	Tiling window manager
 Summary(pl.UTF-8):	Kafelkowy zarządca okien
 Name:		xmonad
 Version:	0.15
-Release:	3
+Release:	4
 License:	BSD
 Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
