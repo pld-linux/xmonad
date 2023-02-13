@@ -3,6 +3,7 @@
 %bcond_with	doc	# build with docs (broken)
 #
 Summary:	Tiling window manager
+Summary(pl.UTF-8):	Kafelkowy zarządca okien
 Name:		xmonad
 Version:	0.15
 Release:	3
@@ -11,7 +12,7 @@ Group:		X11/Window Managers
 Source0:	http://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	3a45ffb3a46482da8d94873c48a79dfa
 Source1:	%{name}.desktop
-URL:		http://www.xmonad.org
+URL:		https://xmonad.org/
 BuildRequires:	ghc >= 6.12.3
 BuildRequires:	ghc-X11 >= 1.6
 BuildRequires:	ghc-extensible-exceptions
@@ -41,6 +42,17 @@ may be written by the user in config files. Layouts are applied
 dynamically, and different layouts may be used on each workspace.
 Xinerama is fully supported, allowing windows to be tiled on several
 screens.
+
+%description -l pl.UTF-8
+xmonad to kafelkowy zarządca okien dla X. Okna są układane
+automatycznie, aby pokryć ekran bez przerw ani zachodzenia,
+maksymalizując wykorzystanie ekranu. Wszystkie możliwości zarządcy są
+dostępne z klawiatury - myszka jest całkowicie opcjonalna. xmonad jest
+napisany i rozszerzalny w Haskellu. Użytkownik w plikach
+konfiguracyjnych może dopisywać własne algorytmy układu i inne
+rozszerzenia. Układy są stosowane dynamicznie, a każda przestrzeń
+robocza może mieć swój. Xinerama jest w pełni obsługiwana, pozwalając
+na rozłożenie okien na kilku ekranach.
 
 %package doc
 Summary:	HTML documentation for %{name}
